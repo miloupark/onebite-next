@@ -2,6 +2,7 @@ import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -12,12 +13,18 @@ export default function App({ Component, pageProps }: AppProps) {
     // 버튼 클릭 이벤트로 /test 페이지로 이동한다 (클라이언트 사이드 라우팅)
   };
 
+  useEffect(() => {
+    router.prefetch('/test');
+  }, []);
+
   return (
     <>
       <header>
         <Link href={'/'}>Logo</Link>
         &nbsp;
-        <Link href={'/search'}>search</Link>
+        <Link href={'/search'} prefetch={false}>
+          search
+        </Link>
         &nbsp;
         <Link href={'/book/1'}>book/1</Link>
         <div>
