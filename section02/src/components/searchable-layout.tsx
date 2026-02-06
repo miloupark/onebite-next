@@ -24,11 +24,18 @@ export default function SearchableLayout({
     router.push(`/search?q=${search}`);
   };
 
+  const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      onSubmit();
+    }
+  };
+
   return (
     <div>
       <div>
         <input
           value={search}
+          onKeyDown={onKeyDown}
           placeholder='검색어를 입력하세요'
           onChange={onChangeSearch}
         />
