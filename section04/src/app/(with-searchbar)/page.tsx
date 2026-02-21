@@ -2,9 +2,11 @@ import BookItem from '@/components/book-item';
 import style from './page.module.css';
 import { BookData } from '@/types';
 
+const API_BASE = process.env.NEXT_PUBLIC_API_SERVER_URL;
+
 // 모든 도서
 async function AllBooks() {
-  const response = await fetch(`http://localhost:12345/book`);
+  const response = await fetch(`${API_BASE}/book`);
   if (!response.ok) {
     return <div>오류가 발생했습니다.</div>;
   }
@@ -22,7 +24,7 @@ async function AllBooks() {
 
 // 추천 도서
 async function RecommendedBooks() {
-  const response = await fetch(`http://localhost:12345/book/random`);
+  const response = await fetch(`${API_BASE}/book/random`);
   if (!response.ok) {
     return <div>오류가 발생했습니다.</div>;
   }
