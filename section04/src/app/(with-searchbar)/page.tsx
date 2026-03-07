@@ -6,7 +6,7 @@ const API_BASE = process.env.NEXT_PUBLIC_API_SERVER_URL;
 
 // 모든 도서
 async function AllBooks() {
-  const response = await fetch(`${API_BASE}/book`);
+  const response = await fetch(`${API_BASE}/book`, { cache: 'no-store' });
   if (!response.ok) {
     return <div>오류가 발생했습니다.</div>;
   }
