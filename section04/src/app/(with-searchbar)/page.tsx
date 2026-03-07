@@ -24,7 +24,9 @@ async function AllBooks() {
 
 // 추천 도서
 async function RecommendedBooks() {
-  const response = await fetch(`${API_BASE}/book/random`);
+  const response = await fetch(`${API_BASE}/book/random`, {
+    cache: 'force-cache',
+  });
   if (!response.ok) {
     return <div>오류가 발생했습니다.</div>;
   }
